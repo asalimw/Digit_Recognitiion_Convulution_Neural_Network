@@ -110,18 +110,25 @@ class NeuralNetwork():
         self.hidden_to_output_weights = weight2 - self.learning_rate * hidden_to_output_weight_gradients.T # TODO
         # print(self.biases.shape)
         # print(self.input_to_hidden_weights.shape)
-        print(self.hidden_to_output_weights.shape)
+        # print(self.hidden_to_output_weights.shape)
 
 
     def predict(self, x1, x2):
 
+        bias = np.array(self.biases)  # The (input-to-hidden) biases as bias
+        weight1 = np.array(self.input_to_hidden_weights)  # The weight between input to hidden layer(first)
+        weight2 = np.array(self.hidden_to_output_weights)  # The weight between hidden to output layer (last)
+        relu = np.vectorize(rectified_linear_unit)  # The hidden-layer-activation using Relu
+        output_relu = output_layer_activation  # The Relu for output
+
         input_values = np.matrix([[x1],[x2]])
+        x = np.array(input_values)  # The input value as x in an array
 
         # Compute output for a single input(should be same as the forward propagation in training)
-        # hidden_layer_weighted_input = # TODO
-        # hidden_layer_activation = # TODO
-        # output = # TODO
-        # activated_output = # TODO
+        hidden_layer_weighted_input = weight1 @ x + bias # TODO
+        hidden_layer_activation = relu(hidden_layer_weighted_input) # TODO
+        output = weight2 @ hidden_layer_activation # TODO
+        activated_output = output_relu(output) # TODO
 
         return activated_output.item()
 
@@ -148,4 +155,4 @@ x = NeuralNetwork()
 x.train_neural_network()
 
 # UNCOMMENT THE LINE BELOW TO TEST YOUR NEURAL NETWORK
-# x.test_neural_network()
+x.test_neural_network()
