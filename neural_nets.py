@@ -105,6 +105,7 @@ class NeuralNetwork():
 
 
         # Use gradients to adjust weights and biases using gradient descent
+        # http://neuralnetworksanddeeplearning.com/chap2.html
         self.biases = bias - self.learning_rate * bias_gradients # TODO
         self.input_to_hidden_weights = weight1 - self.learning_rate * input_to_hidden_weight_gradients # TODO
         self.hidden_to_output_weights = weight2 - self.learning_rate * hidden_to_output_weight_gradients.T # TODO
