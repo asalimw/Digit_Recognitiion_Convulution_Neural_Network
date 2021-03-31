@@ -96,7 +96,7 @@ class NeuralNetwork():
 
         # https://datascience.stackexchange.com/questions/20139/gradients-for-bias-terms-in-backpropagation
         bias_gradients = hidden_layer_error  # TODO
-        hidden_to_output_weight_gradients =  np.multiply(output_layer_error, hidden_layer_activation) # TODO
+        hidden_to_output_weight_gradients = np.multiply(output_layer_error, hidden_layer_activation) # TODO
         input_to_hidden_weight_gradients = np.multiply(bias_gradients, x.T) # TODO
 
         # print(bias_gradients.shape)

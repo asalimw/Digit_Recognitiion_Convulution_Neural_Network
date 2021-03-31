@@ -21,6 +21,7 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         # TODO initialize model layers here
 
+
     def forward(self, x):
 
         # TODO use model layers to predict the two digits

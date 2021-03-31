@@ -46,6 +46,13 @@ def main():
               nn.Conv2d(1, 32, (3, 3)),
               nn.ReLU(),
               nn.MaxPool2d((2, 2)),
+              nn.Conv2d(32, 64, (3, 3)),
+              nn.ReLU(),
+              nn.MaxPool2d((2, 2)),
+              nn.Flatten(),
+              nn.Linear(1600, 128), #https://pytorch.org/docs/master/generated/torch.nn.Linear.html#torch.nn.Linear
+              nn.Dropout(), #https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html
+              nn.Linear(128, 10),
             )
     ##################################
 
