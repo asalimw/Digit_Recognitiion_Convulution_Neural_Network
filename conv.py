@@ -31,14 +31,14 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         # TODO initialize model layers here
 
-        self.Conv2d_1 = nn.Conv2d(1, 32, (3, 3)),
-        self.Relu = nn.ReLU(),
-        self.MaxPool2d = nn.MaxPool2d((2, 2)),
-        self.Conv2d_2 = nn.Conv2d(32, 64, (3, 3)),
-        self.Flatten = nn.Flatten(),
-        self.Linear_1 = nn.Linear(1600, 64),  # https://pytorch.org/docs/master/generated/torch.nn.Linear.html#torch.nn.Linear
-        self.Dropout = nn.Dropout(),  # https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html
-        self.Linear_2 = nn.Linear(64, 20),
+        self.Conv2d_1 = nn.Conv2d(1, 32, (3, 3))
+        self.Relu = nn.ReLU()
+        self.MaxPool2d = nn.MaxPool2d((2, 2))
+        self.Conv2d_2 = nn.Conv2d(32, 64, (3, 3))
+        self.Flatten = nn.Flatten()
+        self.Linear_1 = nn.Linear(2880, 64)  # https://pytorch.org/docs/master/generated/torch.nn.Linear.html#torch.nn.Linear
+        self.Dropout = nn.Dropout() # https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html
+        self.Linear_2 = nn.Linear(64, 20)
 
     def forward(self, x):
 
