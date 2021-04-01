@@ -11,7 +11,7 @@ import sys
 sys.path.append("..")
 import utils
 from utils import *
-from train_utils import batchify_data, run_epoch, train_model, Flatten
+from train_utils2 import batchify_data, run_epoch, train_model, Flatten
 
 def main():
     # Load the dataset
