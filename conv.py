@@ -13,7 +13,17 @@ nb_epoch = 30
 num_classes = 10
 img_rows, img_cols = 42, 28 # input image dimensions
 
-
+# copy from nnet_cnn
+# nn.Conv2d(1, 32, (3, 3)),
+# nn.ReLU(),
+# nn.MaxPool2d((2, 2)),
+# nn.Conv2d(32, 64, (3, 3)),
+# nn.ReLU(),
+# nn.MaxPool2d((2, 2)),
+# nn.Flatten(),
+# nn.Linear(1600, 64), #https://pytorch.org/docs/master/generated/torch.nn.Linear.html#torch.nn.Linear
+# nn.Dropout(), #https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html
+# nn.Linear(64, 10),
 
 class CNN(nn.Module):
 
@@ -21,10 +31,31 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         # TODO initialize model layers here
 
+        self.Conv2d_1 = nn.Conv2d(1, 32, (3, 3)),
+        self.Relu = nn.ReLU(),
+        self.MaxPool2d = nn.MaxPool2d((2, 2)),
+        self.Conv2d_2 = nn.Conv2d(32, 64, (3, 3)),
+        self.Flatten = nn.Flatten(),
+        self.Linear_1 = nn.Linear(1600, 64),  # https://pytorch.org/docs/master/generated/torch.nn.Linear.html#torch.nn.Linear
+        self.Dropout = nn.Dropout(),  # https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html
+        self.Linear_2 = nn.Linear(64, 20),
 
     def forward(self, x):
 
         # TODO use model layers to predict the two digits
+        x = self.Conv2d_1(x)
+        x = self.Relu(x)
+        x = self.MaxPool2d(x)
+        x = self.Conv2d_2(x)
+        x = self.Relu(x)
+        x = self.MaxPool2d(x)
+        x = self.Flatten(x)
+        x = self.Linear_1(x)
+        x = self.Dropout(x)
+        x = self.Linear_2(x)
+
+        out_first_digit = x[:,:10]
+        out_second_digit = x[:,10:]
 
         return out_first_digit, out_second_digit
 
