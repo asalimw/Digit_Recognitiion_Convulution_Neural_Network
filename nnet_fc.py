@@ -39,9 +39,10 @@ def main():
     #################################
     ## Model specification TODO
     model = nn.Sequential(
-              nn.Linear(784, 10),
-              nn.ReLU(),
-              nn.Linear(10, 10),
+              nn.Linear(784, 128),
+              # nn.ReLU(),
+              nn.LeakyReLU(negative_slope=0.1, inplace=True),
+              nn.Linear(128, 10),
             )
     lr=0.1
     momentum=0
